@@ -16,6 +16,14 @@
         <a class="nav-item nav-link" href={{  url_for('main.view_bloggers') }}>Bloggers</a>
     {% endif %}
 
+    {% if title == 'Search Results' %}
+        <a class="nav-item nav-link" href="{{url_for('main.home')}}">RAIN BLOG</a>
+        <a class="nav-item nav-link" href="{{url_for('main.home')}}">Home</a>
+        <a class="nav-item nav-link" href="{{url_for('main.signup')}}">Signup</a>
+        <a class="nav-item nav-link" href={{  url_for('main.view_posts') }}>Posts!</a>
+        <a class="nav-item nav-link" href={{  url_for('main.view_bloggers') }}>Bloggers</a>
+    {% endif %}
+
     {% if title == 'Home' %}
         <a class="nav-item nav-link" href="{{url_for('main.home')}}">RAIN BLOG</a>
         <a class="nav-item nav-link active" href="{{url_for('main.home')}}">Home</a>

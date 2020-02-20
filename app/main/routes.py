@@ -7,12 +7,6 @@ from app.models3 import User, City, Forecast
 
 bp_main = Blueprint('main', __name__)
 
-#
-# @bp_main.route('/')
-# def home():
-#     search = CityBlogSearchForm(request.form)
-#     return render_template('index.html', title='Home', search=search)
-
 
 @bp_main.route('/signup/', methods=['POST', 'GET'])
 def signup():
@@ -51,18 +45,19 @@ def search_results(search):
         return redirect('/')
 
     if select_string == 'City':
-        results = City.query.filter(City.city.contains(search_string)).all()
+        results = Forecast.query.join(City).filter(City.city.contains(search_string)).all()
         if not results:
             flash('Hm... looks like we have nothing on {searched}!'.format(searched=search_string.capitalize()))
             return redirect('/')
-        return render_template('search_results_cities.html')
+        else:
+            return render_template('search_results_city.html', title='Search Results', results=results, searched=search_string)
 
     if select_string == 'Blog':
-        results = User.query.filter(User.username.contains(search_string)).all()
+        results = Forecast.query.join(City).filter(Forecast.forecast.contains(search_string)).all()
         if not results:
             flash("Hm... we don't know '{searched}', looks like you made up that blog!".format(searched=search_string))
             return redirect('/')
-    return render_template('search_results_blogs.html', results=results)
+    return render_template('search_results_blogs.html', title='Search Results', results=results, searched=search_string)
 
 
 @bp_main.route('/posts/', methods=['GET'])

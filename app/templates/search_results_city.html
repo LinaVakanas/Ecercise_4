@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% from "_formhelpers.html" import render_field %}
+{% block title %}{{ title }}{% endblock %}
+
+{% block header %}{{title}}{% endblock %}
+
+{% block content %}
+    <h2>Here is everything we found on {{ searched }}:</h2>
+    {% if results|length %}
+        {% for result in results %}
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">{{ result.city }}</h5>
+                    <p class="card-text">
+                        Forecast: {{ result.forecast }}
+                    </p>
+                    <p>
+                        Comment: {{ result.comment }}
+                    </p>
+                    <h6 class="card-subtitle mb-2 text-muted">
+                    Date: {{ result.forecast_datetime }}
+                    </h6>
+                </div>
+            </div>
+            <br>
+        {% endfor %}
+    {% endif %}
+{% endblock %}
