@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% from "_formhelpers.html" import render_field %}
+{% block title %}{{ title }}{% endblock %}
+
+{% block header %}{{title}}{% endblock %}
+
+{% block content %}
+{% if bloggers|length %}
+    <div>
+        <ul>
+            {% for blogger in bloggers %}
+            <li>{{ blogger.username }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+{% else %}
+<div class="row">
+        <div class="col-1">
+        </div>
+        <div class="col-10">
+            <p>
+                Sorry, looks like we have no bloggers yet.
+            </p>
+        </div>
+        <div class="col-1"></div>
+    </div>
+{% endif %}
+{% endblock %}

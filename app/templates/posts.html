@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% from "_formhelpers.html" import render_field %}
+{% block title %}{{ title }}{% endblock %}
+
+{% block header %}{{title}}{% endblock %}
+
+{% block content %}
+{% if posts|length %}
+    {% for post in posts %}
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">{{ post.city }}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">
+                    {% if post.author !=None %}
+                        post author: {{ post.author }}  {{ post.username }}
+                    {% else %}
+                        post author: {{ post.username }}
+                    {% endif %}
+                </h6>
+                <p class="card-text">
+                    Forecast: {{ post.forecast }}
+                </p>
+            </div>
+        </div>
+        <br>
+    {% endfor %}
+{% else %}
+<div class="row">
+        <div class="col-1">
+        </div>
+        <div class="col-10">
+            <p>
+                Sorry, looks like we have no posts yet. Why not make your own?
+            </p>
+        </div>
+        <div class="col-1"></div>
+    </div>
+{% endif %}
+{% endblock %}

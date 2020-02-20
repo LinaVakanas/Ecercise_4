@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% from "_formhelpers.html" import render_field %}
+{% block title %}{{ title }}{% endblock %}
+
+{% block header %}{{title}}{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-1">
+        </div>
+        <div class="col-10">
+            <p>Lorem ipsum dolor amet live-edge beard duis enim. Lomo scenester chillwave gluten-free snackwave,
+                farm-to-table flannel intelligentsia meditation man bun officia YOLO woke banjo. Fanny pack eiusmod
+                vinyl tote bag aute, incididunt ullamco narwhal cold-pressed. Edison bulb schlitz normcore, mlkshk est
+                cardigan skateboard authentic. </p>
+            <p>YOLO esse hot chicken 8-bit. Whatever pork belly raclette before they sold out. Pug squid air plant next level butcher.
+                Chambray qui retro, flannel beard vaporware +1 ut. Godard yr organic blue bottle. Aesthetic sartorial
+                sriracha venmo labore. Portland VHS deep v lo-fi palo santo, put a bird on it pabst irure fugiat duis
+                hella listicle. In ennui gochujang small batch craft beer biodiesel. Echo park gastropub chia, hot
+                chicken hella pop-up kinfolk direct trade pok pok vice portland beard ramps palo santo aute. Sint
+                glossier plaid brunch. XOXO tote bag everyday carry +1, ullamco trust fund beard ethical chillwave irure
+                venmo kogi. Food truck roof party in fashion axe DIY listicle voluptate in aliquip ipsum. Sint umami est
+                polaroid, succulents in shaman brunch cardigan air plant heirloom qui craft beer raw denim health goth.
+                Tilde VHS forage lo-fi mollit id kale chips nulla, deep v heirloom.
+            </p>
+        </div>
+        <div class="col-1"></div>
+    </div>
+
+<hr>
+
+    <div class="container-fluid">
+        <h3>Looking for something in particular?</h3>
+
+        <form method="post" >
+            <dl>
+                <div class="form-row align-items-center mt-0">
+                    <div class="col-auto mb-4">
+                        {{ render_field(search.search) }}
+                    </div>
+                    <div class="col-auto mb-3">
+                        {{ render_field(search.select) }}
+                    </div>
+                    <div class="col-2 mb-0">
+                        <input class="btn btn-outline-success mr-0" type="submit" value="Search">
+                    </div>
+                    <div class="col-4"></div>
+                </div>
+            </dl>
+        </form>
+    </div>
+{% endblock %}
